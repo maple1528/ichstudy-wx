@@ -73,7 +73,7 @@
 		onLoad(options) {
 			const token = wx.getStorageSync('token')
 			if(token) {
-				this.getVrList()
+				this.getVrList_tourist()
 				this.isToken = true
 				// this.getBannerList()
 				console.log("有token啦")

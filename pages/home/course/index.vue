@@ -19,7 +19,7 @@
 				<CourseItem :info="item" :language="language"></CourseItem>
 			</view>
 		</view>
-		<!-- <tabbar :state="2"></tabbar> -->
+		<tabbar :state="2"></tabbar>
 	</view>
 </template>
 

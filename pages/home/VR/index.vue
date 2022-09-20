@@ -12,7 +12,7 @@
 				<view class="listViewText">{{isLanguage ? item.enname : item.cnname}}</view>
 			</view>
 		</view>
-		<!-- <tabbar :state="3"></tabbar> -->
+		<tabbar :state="3"></tabbar>
 	</view>
 </template>
 

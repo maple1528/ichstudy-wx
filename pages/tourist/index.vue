@@ -7,7 +7,7 @@
 			</view>
 		</view>
 
-		<tabbar :state="3"></tabbar>
+		<!-- <tabbar :state="3"></tabbar> -->
 		
 	</view>
 </template>
