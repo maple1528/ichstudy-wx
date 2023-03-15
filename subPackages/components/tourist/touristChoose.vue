@@ -156,7 +156,6 @@
 				})
 				this.$set(this.priceDate[item.id],'isShow', 'block')
 				this.chooseDate = this.priceDate[item.id].date
-				// console.log(this.priceDate)
 				this.tindex = this.priceDate[item.id].tindex
 				this.tsindex = this.priceDate[item.id].tsindex
 				}
