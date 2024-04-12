@@ -75,26 +75,19 @@
 			if(token) {
 				this.getVrList()
 				this.isToken = true
-				// this.getBannerList()
-				console.log("有token啦")
 			} else {
 				this.getVrList_tourist()
-				// this.getBannerList()
 				console.log("游客模式开启")
 			}
 			this.index = options.id
-			console.log('index', this.index)
 			this.getVrRec()
 			this.getTop()
 			this.scrollTop = this.scrollTop * 2 +14
 		},
 		onShow() {
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
-			// console.log(this.language)
 			this.getLanguage()
-			// console.log(this.isLanguage)
 		},
 		methods: {
 			getLanguage() {
@@ -109,7 +102,6 @@
 				const that = this
 				that.vrClick = wx.getStorageSync('vrClick')
 				that.vrClick++
-				// console.log(that.vrClick)
 				uni.setStorage({
 					key: 'vrClick',
 					data: that.vrClick
@@ -144,7 +136,6 @@
 			    wx.getSystemInfo({
 			      success: function (res) {
 			        that.scrollTop = res.statusBarHeight
-							// console.log(that.scrollTop)
 			      },
 			    });
 			},
@@ -159,7 +150,6 @@
 				getVrList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						for (let i=0; i<data.length; i++) {
 							if(data[i].id == this.index) {
 								this.intro.push({
@@ -178,7 +168,6 @@
 					.catch(err => console.log(err)) 
 			},
 			goUrl(url) {
-				console.log(url)
 				uni.navigateTo({
 					url: './vr?url=' + url
 				})
@@ -187,7 +176,6 @@
 				getVrList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						let vrRec = []
 						data.forEach(item => {
 							vrRec.push({
@@ -199,7 +187,6 @@
 						})
 						vrRec = this.getRandomArrayElements(vrRec, 4)
 						this.recItem = vrRec
-						// console.log(this.recItem)
 					})
 					.catch(err => console.log(err))
 			},

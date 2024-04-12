@@ -66,7 +66,6 @@
 			    wx.getSystemInfo({
 			      success: function (res) {
 			        that.scrollTop = res.statusBarHeight
-							// console.log(that.scrollTop)
 			      },
 			    });
 			},
@@ -74,7 +73,6 @@
 				getUserInfo()
 				.then(res => {
 					const result = JSON.parse(res.data).endata.data
-					// console.log(result)
 					this.userInfo = result
 					uni.setStorage({
 						key: 'userInfo',
@@ -102,7 +100,6 @@
 					.then(res => {
 						const that = this
 						const data = JSON.parse(res.data).endata
-						// console.log(data)
 						uni.showToast({
 							title: data.msg,
 							icon: 'none'

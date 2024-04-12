@@ -115,12 +115,9 @@
 				this.getCourseList()
 				this.getVrList()
 				this.isToken = true
-				// this.getBannerList()
-				console.log("有token啦")
 			} else {
 				this.getCourseList_tourist()
 				this.getVrList_tourist()
-				// this.getBannerList()
 				console.log("游客模式开启")
 			}
 		},
@@ -157,7 +154,6 @@
 				const that = this
 				that.vrClick = wx.getStorageSync('vrClick')
 				that.vrClick++
-				// console.log(that.vrClick)
 				uni.setStorage({
 					key: 'vrClick',
 					data: that.vrClick
@@ -191,7 +187,6 @@
 				const that = this
 				that.courseClick = wx.getStorageSync('courseClick')
 				that.courseClick++
-				// console.log(that.courseClick)
 				uni.setStorage({
 					key: 'courseClick',
 					data: that.courseClick
@@ -225,7 +220,6 @@
 				getCourseList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const courses = []
 						data.forEach(item => {
 							courses.push({
@@ -236,7 +230,6 @@
 							})
 						})
 						this.courseItem = courses
-						// console.log(this.courseItem)
 					})
 					.catch(err => {
 						console.log(err)
@@ -252,7 +245,6 @@
 				getVrList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const vrs = []
 						data.forEach(item => {
 							vrs.push({
@@ -263,7 +255,6 @@
 							})
 						})
 						this.vrItem = vrs
-						// console.log(this.vrItem)
 					})
 					.catch(err => {
 						{
@@ -282,7 +273,6 @@
 				getCourseList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const courses = []
 						data.forEach(item => {
 							courses.push({
@@ -293,7 +283,6 @@
 							})
 						})
 						this.courseItem = courses
-						// console.log(this.courseItem)
 					})
 					.catch(err => console.log(err))
 			},
@@ -301,7 +290,6 @@
 				getVrList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const vrs = []
 						data.forEach(item => {
 							vrs.push({
@@ -312,7 +300,6 @@
 							})
 						})
 						this.vrItem = vrs
-						// console.log(this.vrItem)
 					})
 					.catch(err => console.log(err))
 			},
@@ -320,7 +307,6 @@
 				getBannerList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const banners = []
 						data.forEach(item => {
 							banners.push({

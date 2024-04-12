@@ -32,11 +32,8 @@
 			if (token) {
 				this.getVrList()
 				this.isToken = true
-				// this.getBannerList()
-				console.log("有token啦")
 			} else {
 				this.getVrList_tourist()
-				// this.getBannerList()
 				console.log("游客模式开启")
 			}
 		},
@@ -45,7 +42,6 @@
 				const that = this
 				that.vrClick = wx.getStorageSync('vrClick')
 				that.vrClick++
-				// console.log(that.vrClick)
 				uni.setStorage({
 					key: 'vrClick',
 					data: that.vrClick
@@ -79,7 +75,6 @@
 				getVrList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const vrs = []
 						data.forEach(item => {
 							vrs.push({
@@ -90,7 +85,6 @@
 							})
 						})
 						this.vrItem = vrs
-						// console.log(this.vrItem)
 					})
 					.catch(err => console.log(err))
 			},
@@ -98,7 +92,6 @@
 				getVrList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const vrs = []
 						data.forEach(item => {
 							vrs.push({
@@ -109,7 +102,6 @@
 							})
 						})
 						this.vrItem = vrs
-						// console.log(this.vrItem)
 					})
 					.catch(err => console.log(err))
 			}

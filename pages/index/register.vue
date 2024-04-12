@@ -45,12 +45,9 @@
 			this.scrollTop = this.scrollTop * 2 +14
 		},
 		onShow() {
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
-			console.log(this.language)
 			this.getLanguage()
-			console.log(this.isLanguage)
 		},
 		methods: {
 			getUsername() {
@@ -84,7 +81,6 @@
 			    wx.getSystemInfo({
 			      success: function (res) {
 			        that.scrollTop = res.statusBarHeight
-							// console.log(that.scrollTop)
 			      },
 			    });
 			},
@@ -125,7 +121,6 @@
 					register(this.username, this.password)
 						.then(res => {
 							const data = JSON.parse(res.data).endata
-							console.log(data)
 							// 注册成功
 							uni.showToast({
 								title: data.msg,

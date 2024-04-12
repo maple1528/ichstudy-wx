@@ -36,21 +36,16 @@
 			const token = wx.getStorageSync('token')
 			if(token) {
 				this.getCourseList()
-				// this.getBannerList()
-				console.log("有token啦")
 			} else {
 				this.getCourseList_tourist()
-				// this.getBannerList()
 				console.log("游客模式开启")
 			}
-			// this.getCourseList_tourist()
 		},
 		methods:{
 			getCourseList() {
 				getCourseList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const courses = []
 						data.forEach(item => {
 							courses.push({
@@ -63,7 +58,6 @@
 							})
 						})
 						this.courseItem = courses
-						// console.log(this.courseItem)
 					})
 					.catch(err => console.log(err))
 			},
@@ -71,7 +65,6 @@
 				getCourseList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						console.log(data)
 						const courses = []
 						data.forEach(item => {
 							courses.push({
@@ -84,7 +77,6 @@
 							})
 						})
 						this.courseItem = courses
-						// console.log(this.courseItem)
 					})
 					.catch(err => console.log(err))
 			}

@@ -59,12 +59,10 @@
 			}
 		},
 		created() {
-			console.log(this.orderinfo)
 			this.num = this.orderinfo.mates.length
 			this.totalprice = this.orderinfo.price * this.num
 			var dateee = new Date(this.orderinfo.create_time).toJSON()
 			this.createtime = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
-			// console.log(this.createtime)
 		},
 		methods: {
 			folded(){

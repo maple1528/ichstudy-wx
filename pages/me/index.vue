@@ -124,7 +124,6 @@
 			},
 			set(){
 				if (!this.userInfo.username) {
-					// this.wxGetUserProfile()
 					uni.navigateTo({
 						url: "../../subPackages/pages/index/index",
 					})
@@ -143,9 +142,6 @@
 				wx.removeStorageSync('openid')
 				wx.removeStorageSync('token')
 				wx.removeStorageSync('userInfo')
-				// uni.reLaunch({
-				// 	url: '../index/index'
-				// })
 				uni.redirectTo({
 					url: '/pages/me/index'
 				})
@@ -154,7 +150,6 @@
 			  getPlayData(this.userInfo.username)
 			    .then(res => {
 			      const data = JSON.parse(res.data).endata.data
-			      // console.log(data)
 						if(data.length === 0) {
 							this.v_cntitle = '暂无'
 							this.v_entitle = 'no course'
@@ -180,7 +175,6 @@
 				wx.getUserProfile({
 					desc: '登录账号，完善用户信息',
 					success(res) {
-						console.log('getUserProfile', res)
 					 	let user = res.userInfo
 					 	that.userInfo.nickName = user.nickName
 					 	that.userInfo.avatarUrl = user.avatarUrl

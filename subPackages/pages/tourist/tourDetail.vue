@@ -90,7 +90,6 @@
 			const token = wx.getStorageSync('token')
 			if(token) {
 				this.isToken = true
-				console.log("有token啦")
 			}
 			this.getTop()
 			this.id = options.id
@@ -100,7 +99,6 @@
 			this.scrollTop = this.scrollTop * 2 + 14
 		},
 		onShow() {
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
 		},
@@ -117,7 +115,6 @@
 			    wx.getSystemInfo({
 			      success: function (res) {
 			        that.scrollTop = res.statusBarHeight
-							// console.log(that.scrollTop)
 			      },
 			    });
 			},
@@ -138,7 +135,6 @@
 				getTouristList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const tourists = []
 						data.forEach(item => {
 							if(item.tindex === this.id){
@@ -169,7 +165,6 @@
 							}
 						})
 						this.tourinfo = tourists
-						// console.log(tourists)
 					})
 					.catch(err => console.log(err))
 			},
@@ -177,8 +172,6 @@
 				getTouristSectionList(this.id)
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
-						// const sections = []
 						const visitTime = []
 						var flag = 0
 						var id = 0
@@ -218,10 +211,8 @@
 								}		
 							}
 						})
-						// this.price = sections
 						this.visitTime = visitTime
 						this.isTrans = true
-						// console.log(this.price)
 					})
 					.catch(err => console.log(err))
 			},
@@ -229,7 +220,6 @@
 				getRegistrationList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						let len =0
 						data.forEach(item => {
 							if(item.tindex === this.id){

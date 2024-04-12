@@ -25,7 +25,6 @@
 		},
 		methods:{
 			videoChangeEvent(time) {
-				// console.log(time)
 				this.setZimu(time, this.currentZimuIndex)
 			},
 			setZimu(time, index) {
@@ -87,10 +86,6 @@
 			changeZimu(zh, en) {
 				this.zh = zh
 				this.en = en
-				// this.setData({
-				// 		zh,
-				// 		en
-				// })
 			},
 			// 隐藏字幕
 			hideZimu() {

@@ -47,7 +47,6 @@
 			}
 		},
 		onShow(){
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
 			this.getLanguage()
@@ -62,7 +61,6 @@
 				})
 			} else {
 				that.userInfo = userInfo
-				// console.log(this.userInfo.username)
 				this.getCourse()
 			}
 		},
@@ -75,7 +73,6 @@
 			  getPlayData(this.userInfo.username)
 			    .then(res => {
 			      const data = JSON.parse(res.data).endata.data
-			      console.log(data)
 						if(data.length === 0) {
 							this.cninfo = '暂无观看历史'
 							this.eninfo = 'no history'

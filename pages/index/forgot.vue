@@ -60,9 +60,7 @@
 		onShow() {
 			const language = wx.getStorageSync('language')
 			this.language = language
-			// console.log(this.language)
 			this.getLanguage()
-			// console.log(this.isLanguage)
 			if (!this.isLanguage) {
 			  this.text = '发送验证码'
 			} else {
@@ -101,7 +99,6 @@
 			    wx.getSystemInfo({
 			      success: function (res) {
 			        that.scrollTop = res.statusBarHeight
-							// console.log(that.scrollTop)
 			      },
 			    });
 			},
@@ -112,7 +109,6 @@
 					passwordreset(this.username)
 						.then(res => {
 							const data = JSON.parse(res.data).endata
-							console.log(data)
 							if(data.su === 1) {
 								this.tipUser = ""
 								return true
@@ -155,7 +151,6 @@
 			},
 			send() {
 				this.checkEP()
-				// console.log(this.i)
 				if (this.i == '0' && !this.sendphone()){
 					this.sendphone()
 					this.changeSendBtn()
@@ -167,7 +162,6 @@
 				this.checkUser()
 				this.checkVer()
 				this.checkEP()
-				// console.log(this.i)
 				if (this.i == '0'){
 					this.verifyPhone()
 				}else if (this.i == '1'){
@@ -178,7 +172,6 @@
 				sendmailforreset(this.email)
 					.then(res => {
 						const data = JSON.parse(res.data).endata
-						// console.log(data)
 						uni.showToast({
 							title: data.msg,
 							icon: 'none'
@@ -192,7 +185,6 @@
 				sendsmsforreset(this.phone, this.username)
 					.then(res => {
 						const data = JSON.parse(res.data).endata
-						// console.log(data)
 						uni.showToast({
 							title: data.msg,
 							icon: 'none'
@@ -205,7 +197,6 @@
 			verifyPhone(){
 				smspasswordresetverify(this.phone, this.ver)
 					.then(res => {
-						// console.log(res)
 						const data = JSON.parse(res.data).endata
 						uni.showToast({
 							title: data.msg,
@@ -223,7 +214,6 @@
 			verifyEmail(){
 				emailpasswordresetverify(this.email, this.ver)
 					.then(res => {
-						console.log(res)
 						const data = JSON.parse(res.data).endata
 						uni.showToast({
 							title: data.msg,

@@ -26,7 +26,6 @@
 			      const data = JSON.parse(res.data).endata
 			      if (data.su === 1) {
 							this.user.nick_name = this.userInfo.nickname
-							console.log(this.user)
 							uni.removeStorageSync('userInfo')
 							uni.setStorage({
 								key: 'userInfo',

@@ -44,7 +44,6 @@
 				getTouristList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const tourists = []
 						data.forEach(item => {
 							tourists.push({
@@ -59,7 +58,6 @@
 							})
 						})
 						this.touristsItem = tourists
-						// console.log(this.touristsItem)
 					})
 					.catch(err => console.log(err))
 			}

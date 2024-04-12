@@ -35,7 +35,6 @@
 				const that = this
 				that.courseClick = wx.getStorageSync('courseClick')
 				that.courseClick++;
-				// console.log(that.courseClick)
 				uni.setStorage({
 					key: 'courseClick',
 					data: that.courseClick

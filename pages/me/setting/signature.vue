@@ -45,7 +45,6 @@
 					    const data = JSON.parse(res.data).endata
 					    if (data.su === 1) {
 								this.user.signature = this.userInfo.signature
-								console.log(this.user)
 								uni.removeStorageSync('userInfo')
 								uni.setStorage({
 									key: 'userInfo',
@@ -61,7 +60,6 @@
 		},
 		onShow(){
 			const userInfo = wx.getStorageSync('userInfo')
-			// this.language = userInfo[6]
 		},
 		onLoad() {
 			const token = wx.getStorageSync('token')

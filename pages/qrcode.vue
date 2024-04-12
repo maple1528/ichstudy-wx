@@ -39,17 +39,10 @@
 					//工具回调数据
 					// 接下来就可以直接调用微信小程序的api保存到本地或者将这张二维码直接画在海报上面去，看各自需求
 					wx.hideLoading()
-					console.log("生成二维码",res)
 					//将图片路劲放入data中，显示在wxml的image标签上
 					this.ewmImg = res.path
-					// that.setData({
-					// 	ewmImg:res.path,
-					// 	showEwmIndex:e.currentTarget.dataset.index
-					// })
-				
 				}
 			})
-			console.log(this.ewmImg)
 		}
 	}
 </script>

@@ -39,7 +39,6 @@
 		data() {
 			return {
 				items: ['微课', 'VR/AR'],
-				// items: ['微课', 'VR/AR', '动画', '海报'],
 				current: 0,
 				language: 1,
 				isLanguage: true,
@@ -49,12 +48,9 @@
 
 		},
 		onShow() {
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
-			// console.log(this.language)
 			this.getLanguage()
-			// console.log(this.isLanguage)
 		},
 		methods: {
 			onClickItem(e) {

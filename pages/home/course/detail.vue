@@ -147,7 +147,6 @@
 			Track
 		},
 		onShow(){
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
 			this.getLanguage()
@@ -155,39 +154,15 @@
 		onLoad(options) {
 			const token = wx.getStorageSync('token')
 			const userInfo = wx.getStorageSync('userInfo')
-			// console.log(userInfo)
 			const that = this
-			// if(!token) {
-			// 	uni.reLaunch({
-			// 		url: '../../index/index'
-			// 	})
-			// } else {
-			// 	this.index = options.id
-			// 	that.userInfo.username = userInfo.username
-			// 	this.getCourseInfo()
-			// 	this.getSections()
-			// 	this.getCourseCommend()
-			// 	// uni.getSystemInfo({
-			// 	// 	success(res){
-			// 	// 		console.log(res);
-			// 	// 		that.screenWidth = res.screenWidth;
-			// 	// 		console.log(that.screenWidth);
-			// 	// 	}
-			// 	// })
-			// }
 			this.index = options.id
 			that.userInfo.username = userInfo.username
 			this.getCourseInfo()
-			// this.getSection_tourist()
-			// this.getSections()
 			if(token) {
 				this.getSection()
 				this.getQuestion()
-				// this.getBannerList()
-				console.log("有token啦")
 			} else {
 				this.getSection_tourist()
-				// this.getBannerList()
 				console.log("游客模式开启")
 			}
 			this.getCourseCommend()
@@ -242,7 +217,6 @@
 			  getCourseList_tourist()
 			    .then(res => {
 			      const data = JSON.parse(res.data).endata.data
-			      // console.log(data)
 			      for (let i = 0; i < data.length; i++) {
 							if( data[i].cindex === this.index){
 								this.courseinfo.push({
@@ -261,7 +235,6 @@
 			  getSection(this.index)
 			    .then(res => {
 			      const data = JSON.parse(res.data).endata.data
-			      // console.log(data)
 						this.toLearnList = []
 			      data.forEach(item => {
 							if(item.vidfortx == 'vidfortx') { return }
@@ -285,7 +258,6 @@
 			  getSection_tourist(this.index)
 			    .then(res => {
 			      const data = JSON.parse(res.data).endata.data
-			      // console.log(data)
 						this.toLearnList = []
 			      data.forEach(item => {
 							if(item.vidfortx == 'vidfortx') { return }
@@ -309,7 +281,6 @@
 				getCourseList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						let courses = []
 						data.forEach(item => {
 							courses.push({
@@ -321,7 +292,6 @@
 						})
 						courses = this.getRandomArrayElements(courses, 4)
 						this.courseItem = courses
-						// console.log(this.courseItem)
 					})
 					.catch(err => console.log(err))
 			},
@@ -363,7 +333,6 @@
 			  if (!this.stime) {
 			    this.stime = new Date()
 			  }
-			  // console.log(this.stime)
 			},
 			endPlay () {
 				console.log('end')
@@ -372,7 +341,6 @@
 			    this.etime = new Date()
 			    this.deltaTime = this.etime - this.stime
 			  }
-			  // console.log(this.etime)
 			  this.upload()
 			},
 			timeUpdate (e) {
@@ -396,10 +364,8 @@
 				getQuestion()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data;
-						console.log(data)
 						let qItem = [];
 						let answer = [];
-						// console.log(this.toLearnList[this.play])
 						data.forEach(item => {
 							if(this.toLearnList[this.play].sindex === item.sindex){
 								answer.push(
@@ -471,8 +437,8 @@
 		computed:{
 			showList(){
 				if(this.showAll === false){  //当数据不需要完全显示的时候
-				  let showList = [];　　　　　　　　　　　　　
-				  return showList;　　　　　　　　　　　　　　　　 
+				  let showList = [];
+				  return showList;
 				}else{
 				  return this.toLearnList;
 				}

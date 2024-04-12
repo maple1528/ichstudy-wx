@@ -34,9 +34,6 @@
 			const token = wx.getStorageSync('token')
 			if (token) {
 				this.isToken = true
-				console.log("有token啦")
-				// this.getRegistrationList()
-				// this.getTouristList()
 			}
 		},
 		onShow() {
@@ -52,7 +49,6 @@
 				getRegistrationList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const order = []
 						var num = 0
 						data.forEach(item => {
@@ -89,7 +85,6 @@
 								}
 							}
 						})
-						// console.log(this.orderinfo)
 					})
 					.catch(err => console.log(err))
 			},
@@ -97,7 +92,6 @@
 				getTouristList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						console.log(data)
 						const tourist = []
 						data.forEach(item => {
 							tourist.push({

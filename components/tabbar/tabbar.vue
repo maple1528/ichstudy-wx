@@ -51,7 +51,6 @@
 			}
 		},
 		onReady() {
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
 			this.getLanguage()

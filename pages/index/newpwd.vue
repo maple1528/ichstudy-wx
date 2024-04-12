@@ -36,17 +36,13 @@
 		},
 		onLoad(options) {
 			this.username = options.id
-			// console.log(this.username)
 			this.getTop()
 			this.scrollTop = this.scrollTop * 2 +14
 		},
 		onShow() {
-			// const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
-			// console.log(this.language)
 			this.getLanguage()
-			// console.log(this.isLanguage)
 		},
 		methods: {
 			getPassword() {
@@ -74,7 +70,6 @@
 			    wx.getSystemInfo({
 			      success: function (res) {
 			        that.scrollTop = res.statusBarHeight
-							// console.log(that.scrollTop)
 			      },
 			    });
 			},	
@@ -101,7 +96,6 @@
 					passwordmailresetdone(this.username, this.password, this.checkword)
 						.then(res => {
 							const data = JSON.parse(res.data).endata
-							console.log(data)
 							uni.showToast({
 								title: data.msg,
 								icon: 'none'

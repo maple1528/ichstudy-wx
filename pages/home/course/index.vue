@@ -25,7 +25,6 @@
 
 <script>
 	import CourseItem from '../../../components/course/CourseItem.vue'
-	// import { getCourseList } from '../../../api/course/index.js'
 	import { getFileUrl } from '../../../common/index.js'
 	import tabbar from'../../../components/tabbar/tabbar.vue'
 	import { getCourseList, getCourseList_tourist } from '../../../api/course/index.js'
@@ -52,14 +51,10 @@
 			const token = wx.getStorageSync('token')
 			if(token) {
 				this.getCourseList()
-				// this.getBannerList()
-				console.log("有token啦")
 			} else {
 				this.getCourseList_tourist()
-				// this.getBannerList()
 				console.log("游客模式开启")
 			}
-			// this.getCourseList_tourist()
 		},
 		methods:{
 			getLanguage() {
@@ -70,7 +65,6 @@
 				getCourseList()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						// console.log(data)
 						const courses = []
 						data.forEach(item => {
 							courses.push({
@@ -83,7 +77,6 @@
 							})
 						})
 						this.courseItem = courses
-						// console.log(this.courseItem)
 					})
 					.catch(err => console.log(err))
 			},
@@ -91,7 +84,6 @@
 				getCourseList_tourist()
 					.then(res => {
 						const data = JSON.parse(res.data).endata.data
-						console.log(data)
 						const courses = []
 						data.forEach(item => {
 							courses.push({
@@ -104,7 +96,6 @@
 							})
 						})
 						this.courseItem = courses
-						// console.log(this.courseItem)
 					})
 					.catch(err => console.log(err))
 			}

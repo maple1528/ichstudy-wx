@@ -55,9 +55,7 @@
 		onShow() {
 			const language = wx.getStorageSync('language')
 			this.language = language
-			console.log(this.language)
 			this.getLanguage()
-			console.log(this.isLanguage)
 			if (!this.isLanguage) {
 			  this.text = '发送验证码'
 			} else {
@@ -90,7 +88,6 @@
 			    wx.getSystemInfo({
 			      success: function (res) {
 			        that.scrollTop = res.statusBarHeight
-							// console.log(that.scrollTop)
 			      },
 			    });
 			},
@@ -126,9 +123,7 @@
 			},
 			send() {
 				this.checkEP()
-				console.log(this.i)
 				if (this.i === '0'){
-					console.log(this.username)
 					this.changeSendBtn()
 					this.bindPhone()
 				}else if (this.i === '1'){
@@ -139,9 +134,7 @@
 			reg() {
 				const ver = this.checkVer()
 				const ep = this.checkEP()
-				console.log(ver, ep)
 				if(ver && ep) {
-					console.log('i', this.i)
 					if (this.i === '0'){
 						this.verifyPhone()
 					}else if (this.i === '1'){
@@ -153,7 +146,6 @@
 				mailBand(this.email, this.username)
 					.then(res => {
 						const data = JSON.parse(res.data).endata
-						console.log(data)
 						uni.showToast({
 							title: data.msg,
 							icon: 'none'
@@ -167,8 +159,6 @@
 				smsBand(this.phone, this.username)
 					.then(res => {
 						const data = JSON.parse(res.data).endata
-						console.log('0')
-						console.log(data)
 						uni.showToast({
 						  title: data.msg,
 						  icon: 'none'
@@ -181,7 +171,6 @@
 			verifyEmail () {
 				mailVerify(this.email, this.username, this.ver)
 					.then(res => {
-						// console.log(res)
 						const data = JSON.parse(res.data).endata
 						uni.showToast({
 						title: data.msg,
@@ -194,13 +183,11 @@
 								url: './index'
 							})
 						}
-						// this.$emit('goLogin')
 					})
 			},
 			verifyPhone () {
 				smsVerify(this.phone, this.username, this.ver)
 					.then(res => {
-						// console.log(res)
 						const data = JSON.parse(res.data).endata
 						uni.showToast({
 						  title: data.msg,
@@ -213,7 +200,6 @@
 								url: './index'
 							})
 						}
-					  // this.$emit('goLogin')
 					})
 			},
 			changeSendBtn () {

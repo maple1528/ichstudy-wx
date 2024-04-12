@@ -135,11 +135,6 @@
 			this.getLanguage()
 			this.updateSelected()
 			this.updateData()
-			// console.log(this.priceDate)
-			// 给对象添加属性
-			// this.priceDate.forEach((item) => {
-			// 	item.name = '2222'
-			// })
 		},
 		methods: {
 			getLanguage() {
@@ -156,7 +151,6 @@
 				})
 				this.$set(this.priceDate[item.id],'isShow', 'block')
 				this.chooseDate = this.priceDate[item.id].date
-				// console.log(this.priceDate)
 				this.tindex = this.priceDate[item.id].tindex
 				this.tsindex = this.priceDate[item.id].tsindex
 				}
@@ -174,7 +168,6 @@
 					if(item.month === e_month && item.days === e_days) {
 						if(item.id!=0 && item.id!=1) {
 							this.showDate.splice(2, 1, this.priceDate[item.id])
-							// console.log(item.id)
 							this.$set(this.showDate[2],'isShow','block')
 						} else {
 							this.$set(this.showDate[item.id],'isShow','block')
@@ -196,7 +189,6 @@
 				try {
 					this.priceDate.forEach((item) => {
 						if(item.surplus > 0) {
-							// this.info.startDate = item.surplus
 							item.isShow = 'block'
 							throw new Error(item.date);
 						}
@@ -213,9 +205,6 @@
 							this.tindex = item.tindex
 						}
 					})
-					// this.priceDate.forEach((item) => {
-					// 	item.isShow = 'none'
-					// })
 				}
 			},
 			go() {

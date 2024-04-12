@@ -74,7 +74,6 @@
 			const userInfo = wx.getStorageSync('userInfo')
 			const language = wx.getStorageSync('language')
 			this.language = language
-			console.log(userInfo)
 			if(token) {
 				this.userInfo.username = userInfo.username
 				this.userInfo.avatarimg = userInfo.avatarimg
