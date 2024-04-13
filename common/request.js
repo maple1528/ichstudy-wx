@@ -29,6 +29,7 @@ function service(options = {}) {
 			rejected(err);
 		}
 
+		// 使用的是uniapp框架，用uniapp提供的request api发送请求
 		uni.request(options);
 	});
 }

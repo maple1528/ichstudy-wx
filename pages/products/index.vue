@@ -1,3 +1,4 @@
+<!-- 学习 - 课程和VR选择页 -->
 <template>
 		<view class="content">
 			
@@ -71,6 +72,7 @@
 		width: 750rpx;
 		height: 100%;
 		position: relative;
+		/* 苹果手机安全区距离计算 */
 		margin-bottom: calc(118rpx + constant(safe-area-inset-bottom));
 		margin-bottom: calc(118rpx + env(safe-area-inset-bottom));
 	}

@@ -1,3 +1,4 @@
+<!-- 课程列表 -->
 <template>
 	<view class="container">
 		<!-- <view class="course_search_bg">
@@ -9,6 +10,7 @@
 		</view> -->
 		
 		<view class="content">
+			<!-- 需要把几个有代表性的微课放在前面，这样写不合理，后续可让后端增加优先级字段 + v-for和v-if不能一起使用 -->
 			<view v-for="(item,index) in courseItem" :key="index" v-if="index==0 ||  index==1 || index==3 || index==5 || index==6 || index==8 ||index==10 || index==12 ||index==13 || index==19">
 				<CourseItem :info="item" :language="language"></CourseItem>
 				<!-- <image :src="item.img" mode="aspectFill" class="course_content_img"></image>

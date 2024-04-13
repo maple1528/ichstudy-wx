@@ -3,21 +3,26 @@
 		<view class="back" @click="goOff()"  :style="{top: scrollTop + 'rpx'}">
 			<image class="arrow-left" src="../../static/images/iCons/arrowLeftBrown.png"></image>
 		</view>
+		<!-- 输入账号 -->
 		<view class="input-box">
 			<input type="text" :placeholder="getUser()" v-model="username" 
 				placeholder-class="phcolor" @blur="checkUser()">
 		</view>
+		<!-- 校验不通过的提示信息 -->
 		<view class="tips">{{tipUser}}</view>
+		<!-- 输入邮箱/手机号码 -->
 		<view class="input-box">
 			<input type="text" :placeholder="getEP()" v-model="ep" 
 				placeholder-class="phcolor" @blur="checkEP()">
 		</view>
 		<view class="tips">{{tip}}</view>
+		<!-- 输入验证码 -->
 		<view class="identify-code">
 			<view class="identify-box">
 				<input type="text" :placeholder="getVer()" v-model="ver" 
 					placeholder-class="phcolor" @blur="checkVer()">
 			</view>
+			<!-- 发送验证码 -->
 			<view class="identify-btn" @click="send()" :disabled="ifSend">{{text}}</view>
 		</view>
 		<view class="tips">{{tipVer}}</view>
@@ -102,6 +107,7 @@
 			      },
 			    });
 			},
+			// 校验账号
 			checkUser(){
 				if (this.username == '') {
 					this.tipUser = "请输入账号"
@@ -121,6 +127,7 @@
 						})
 				}
 			},
+			// 校验邮箱/手机号码
 			checkEP(){
 				var ph = /^1\d{10}$/
 				var email = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
@@ -141,6 +148,7 @@
 					return
 				}
 			},
+			// 校验验证码
 			checkVer(){
 				if (this.ver == '') {
 					this.tipVer = "请输入验证码"
@@ -149,6 +157,7 @@
 					return true 
 				}
 			},
+			// 发送验证码
 			send() {
 				this.checkEP()
 				if (this.i == '0' && !this.sendphone()){
@@ -158,6 +167,7 @@
 					this.changeSendBtn()
 				}
 			},
+			// 下一步
 			reg() {
 				this.checkUser()
 				this.checkVer()
@@ -168,6 +178,7 @@
 					this.verifyEmail()
 				}
 			},
+			// 发送邮箱验证码
 			sendmail(){
 				sendmailforreset(this.email)
 					.then(res => {
@@ -181,6 +192,7 @@
 						}
 					})
 			},
+			// 发送手机验证码
 			sendphone(){
 				sendsmsforreset(this.phone, this.username)
 					.then(res => {
@@ -194,6 +206,7 @@
 						}
 					})
 			},
+			// 校验手机
 			verifyPhone(){
 				smspasswordresetverify(this.phone, this.ver)
 					.then(res => {
@@ -211,6 +224,7 @@
 						}
 					})
 			},
+			// 校验邮箱
 			verifyEmail(){
 				emailpasswordresetverify(this.email, this.ver)
 					.then(res => {
@@ -228,6 +242,7 @@
 						}
 					})
 			},
+			// 发送验证码按钮，发送后切换成倒计时，60秒后重新发送
 			changeSendBtn () {
 			  this.ifSend = true
 			  let restTime = 30

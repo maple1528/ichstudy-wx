@@ -26,9 +26,10 @@
 				</view>
 			</view>
 		</view> -->
-		
+		<!-- 视频区 -->
 		<view class="video_play">
 			<view class="video">
+				<!-- 为保证视频流畅程度，引入了腾讯视频插件，引入视频需要先上传至腾讯视频，查看视频的vid作为唯一标识 -->
 				<txv-video :vid="toLearnList[play].vid"
 					playerid="txv1" 
 					id="video-player"
@@ -42,9 +43,11 @@
 					</cover-view>
 				</txv-video>
 			</view>
+			<!-- 字幕 -->
 			<Track id="track" ref="track"/>
 		</view>
-		
+		<!-- 答题区 -->
+		<!-- 到设置的时间时自动弹出视频暂停，不论答题的错与对，完成答题后，即可继续观看视频 -->
 		<view class="questionBox" :style="{'display': showQ}">
 			<view class="question-title">
 				<view>{{question[numQ].type}}</view>
@@ -59,7 +62,7 @@
 			<button class="question-btn" @click="DoneQ()">确定</button>
 			<view v-show="isDone" class="question-ans">{{'正确答案：' + question[numQ].ans}}</view>
 		</view>
-		
+		<!-- 课程介绍 -->
 		<view class="course_details">
 			<view class="course_details_name">{{isLanguage? courseinfo[0].enname : courseinfo[0].cnname}}</view>
 			<view :class="!showing ?'course_details_detail':'course_details_complete'">{{isLanguage? courseinfo[0].enintro : courseinfo[0].cnintro}}</view>
@@ -72,7 +75,7 @@
 				<image class="arrowDown" :src="folded()"></image>
 			</view>
 		</view>
-		
+		<!-- 视频列表 -->
 		<view class="video_list">
 			<view class="video_list_click" @click="showAll = !showAll">
 				<text class="video_list_headtext">{{title[0]}}</text>
@@ -85,7 +88,7 @@
 				</view>
 			</view>
 		</view>
-		
+		<!-- 推荐 -->
 		<view class="commend">{{title[1]}}</view>
 		<view class="course_commend">
 			<view v-for="(item,index) in courseItem" :key="index">
@@ -309,6 +312,7 @@
 				}
 			  return newArrList;
 			},
+			// 上传学习记录
 			upload () {
 			  if (!this.stime) {
 					console.log('sss')
@@ -418,7 +422,8 @@
 				const that = this;
 				const TxvContext = requirePlugin("tencentvideo");  
 				let txvContext = TxvContext.getTxvContext('txv1');
-				if (that.isDone === true){
+				if (that.isDone === true) {
+					// 完成后自动播放
 					txvContext.play();
 					that.showQ = 'none';
 					that.darkBackQ = 'static';

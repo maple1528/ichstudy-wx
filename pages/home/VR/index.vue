@@ -1,3 +1,4 @@
+<!-- VR列表 -->
 <template>
 	<view class="vrPage">
 

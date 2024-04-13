@@ -1,3 +1,4 @@
+<!-- 研学 -->
 <template>
 	<view class="content">
 		
@@ -40,6 +41,7 @@
 				if(wx.getStorageSync('language') === 1) this.isLanguage = true
 				else this.isLanguage = false
 			},
+			// 获取研学列表
 			getTouristList() {
 				getTouristList()
 					.then(res => {

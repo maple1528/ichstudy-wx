@@ -1,3 +1,4 @@
+<!-- 我的 - 用户信息 - 个性签名 -->
 <template>
 	<view class="container">
 		<view class="signature">

@@ -1,11 +1,13 @@
+<!-- 我的 - 用户信息 -->
 <template>
 	<view class="container">	
+		<!-- 头像 -->
 		<view class="photo">
 			<text class="text">{{title[0]}}：</text>
 			<image :src="userInfo.avatarUrl" mode="aspectFill" class="photo_img"></image>
 			<!-- <image :src="arrow" mode="aspectFill" class="arrow"></image> -->
 		</view>
-		
+		<!-- 账号 -->
 		<view class="account">
 			<text class="text">{{title[1]}}：</text>
 			<view class="account_right">
@@ -13,7 +15,7 @@
 				<!-- <image :src="arrow" mode="aspectFill" class="arrow"></image> -->
 			</view>
 		</view>
-		
+		<!-- 昵称 -->
 		<view class="nickname" @click="nick()">
 			<text class="text">{{title[2]}}：</text>
 			<view class="nickname_right">
@@ -21,7 +23,7 @@
 				<image :src="arrow" mode="aspectFill" class="arrow"></image>
 			</view>
 		</view>
-		
+		<!-- 个性签名 -->
 		<view class="signature" @click="sign()">
 			<text class="text">{{title[3]}}：</text>
 			<view class="signature_right">
@@ -29,7 +31,7 @@
 				<image :src="arrow" mode="aspectFill" class="arrow"></image>
 			</view>
 		</view>
-		
+		<!-- 手机号码（这里的类名取得有误） -->
 		<view class="email">
 			<text class="text">{{title[4]}}：</text>
 			<view class="email_right">
@@ -37,7 +39,7 @@
 				<image :src="arrow" mode="aspectFill" class="arrow"></image>
 			</view>
 		</view>
-		
+		<!-- 邮箱 -->
 		<view class="password">
 			<text class="text">{{title[5]}}：</text>
 			<view class="password_right">

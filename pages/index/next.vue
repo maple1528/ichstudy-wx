@@ -3,11 +3,13 @@
 		<view class="back" @click="goOff()"  :style="{top: scrollTop + 'rpx'}">
 			<image class="arrow-left" src="../../static/images/iCons/arrowLeftBrown.png"></image>
 		</view>
+		<!-- 输入邮箱/手机号码 -->
 		<view class="input-box">
 			<input type="text" :placeholder="getEP()" v-model="ep" 
 				placeholder-class="phcolor" @blur="checkEP()">
 		</view>
 		<view class="tips">{{tip}}</view>
+		<!-- 验证码 -->
 		<view class="identify-code">
 			<view class="identify-box">
 				<input
@@ -142,7 +144,9 @@
 					}
 				}
 			},
-			bindEmail () {
+			// 绑定邮箱
+			bindEmail() {
+				// 这里都是调用了后端提供的接口，前端只需接受请求的响应，把响应回显在页面上就行了
 				mailBand(this.email, this.username)
 					.then(res => {
 						const data = JSON.parse(res.data).endata
@@ -155,6 +159,7 @@
 						}
 					})
 			},
+			// 绑定手机号
 			bindPhone () {
 				smsBand(this.phone, this.username)
 					.then(res => {
@@ -168,6 +173,7 @@
 						}
 					})
 			},
+			// 校验邮箱
 			verifyEmail () {
 				mailVerify(this.email, this.username, this.ver)
 					.then(res => {
@@ -185,6 +191,7 @@
 						}
 					})
 			},
+			// 校验手机号
 			verifyPhone () {
 				smsVerify(this.phone, this.username, this.ver)
 					.then(res => {

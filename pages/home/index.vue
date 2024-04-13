@@ -2,6 +2,7 @@
 	<view class="content">
 
 		<view class="bg">
+			<!-- 轮播图 -->
 			<swiper class="swiper" indicator-dots="true" display-multiple-items="1" interval="3000" duration="1200"
 				autoplay="true" circular="ture" previous-margin="0" next-margin="0" indicator-active-color="#382321">
 				<block v-for="(item, index) in bannerItem" :key="index">
@@ -14,6 +15,7 @@
 
 		<view class="container">
 
+			<!-- 课程 -->
 			<view class="course">
 
 				<view class="row">
@@ -29,7 +31,8 @@
 					</navigator>
 
 				</view>
-
+				<!-- 左右滑动，只显示固定的4个（这里的写法不大好，后续可以改一下） -->
+				<!-- 还有一个问题，v-for和v-if不能同时使用，需分开 -->
 				<view class="listView">
 					<view class="listView-tile" v-for="(item, index) in courseItem" :key="index"
 						v-if="index == 0 || index == 5 || index == 10 || index == 18" @click="goCourseDetail(item.id)">
@@ -39,6 +42,7 @@
 				</view>
 			</view>
 
+			<!-- VR -->
 			<view class="VR">
 
 				<view class="row">
@@ -69,6 +73,7 @@
 </template>
 
 <script>
+// 这里尽量写成绝对路径更好
 	import {
 		getCourseList
 	} from '../../api/course/index.js'
@@ -111,6 +116,7 @@
 			const token = wx.getStorageSync('token')
 			this.getLanguage()
 			this.getBannerList()
+			// 登录态可以拿到用户的token，如果拿不到就走游客模式，游客模式只能看3个视频，之后强制登录
 			if (token) {
 				this.getCourseList()
 				this.getVrList()
@@ -150,6 +156,7 @@
 					url: "./VR/index"
 				})
 			},
+			// 跳转至具体的VR页面
 			goVrDetail(id) {
 				const that = this
 				that.vrClick = wx.getStorageSync('vrClick')
@@ -183,6 +190,7 @@
 					})
 				}
 			},
+			// 跳转至具体的微课页面
 			goCourseDetail(id) {
 				const that = this
 				that.courseClick = wx.getStorageSync('courseClick')
@@ -204,6 +212,7 @@
 							if (res.confirm) {
 								return
 							} else if (res.cancel) {
+								// 这里的跳转由于index起始页面放到分包里去了，跳转出现了问题，需要重新改一下url，项目中跳转到'/pages/index/index'的都需要修改一下，建议将登录注册都移到分包中
 								uni.reLaunch({
 									url: '/pages/index/index'
 								});
@@ -216,6 +225,7 @@
 					})
 				}
 			},
+			// 获取微课列表
 			getCourseList() {
 				getCourseList()
 					.then(res => {
@@ -241,6 +251,7 @@
 						})
 					})
 			},
+			// 获取VR列表
 			getVrList() {
 				getVrList()
 					.then(res => {
@@ -303,6 +314,7 @@
 					})
 					.catch(err => console.log(err))
 			},
+			// 获取banner图片列表
 			getBannerList() {
 				getBannerList()
 					.then(res => {

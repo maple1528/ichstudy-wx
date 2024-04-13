@@ -1,3 +1,4 @@
+<!-- 研学 - 研学详情页 - 订单详情 -->
 <template>
 	<view class="container">
 		<view class="top">
@@ -10,6 +11,7 @@
 			<view class="number">
 				<view>{{language ?'Serial number '+block2+xulie:'序列号'+block1+xulie}}</view>
 			</view>
+			<!-- 放了一张小程序的二维码为了宣传，后续可以放入生成的二维码，把研学活动的具体信息放进去 -->
 			<image class="code" mode="aspectFill" :src="QRcode"></image>
 		</view>
 
@@ -76,6 +78,7 @@
 			this.language = language;
 		},
 		methods: {
+			// 获取订单信息
 			getRegistrationList() {
 				getRegistrationList()
 					.then(res => {
@@ -101,6 +104,7 @@
 					})
 					.catch(err => console.log(err))
 			},
+			// 获取研学信息
 			getTouristList() {
 				getTouristList()
 					.then(res => {
@@ -117,6 +121,7 @@
 					})
 					.catch(err => console.log(err))
 			},
+			// 获取选择的时间和日期
 			getTouristSectionList(){
 				getTouristSectionList(this.tindex)
 					.then(res => {

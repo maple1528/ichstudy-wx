@@ -1,9 +1,11 @@
+<!-- 起始页面，选择登录或是注册 -->
 <template>
 	<view class="content">
 		<view class="index-bg">
 			<image class="bg-pic" src="../../static/images/indexPic.png" mode="widthFix"></image>
 		</view>
 		<view class="btns">
+			<!-- 通过isLanguage来判断中英文，这里实际上只需language变量即可控制，后续可以优化一下 -->
 			<view class="index-btn" @click="go('/pages/index/login')">{{isLanguage ? 'Sign In' : '登录'}}</view>
 			<view class="index-btn" @click="go('/pages/index/register')">{{isLanguage ? 'Sign Up' : '注册'}}</view>
 		</view>

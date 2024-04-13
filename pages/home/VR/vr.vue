@@ -1,3 +1,4 @@
+<!-- 使用web-view跳转到VR的网页地址 -->
 <template>
 	<view>
 		<web-view :src="url"></web-view>

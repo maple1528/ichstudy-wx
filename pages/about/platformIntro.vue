@@ -1,3 +1,4 @@
+<!-- 平台介绍 -->
 <template>
 		<view class="content">
 			

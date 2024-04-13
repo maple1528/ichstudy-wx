@@ -1,3 +1,4 @@
+<!-- 我的 - 用户信息 - 昵称 -->
 <template>
 	<view class="nickname">
 		<input type="text" @blur="save()" v-model="userInfo.nickname" placeholder="请输入昵称" placeholder-class="phcolor" class="nickname_content"/>

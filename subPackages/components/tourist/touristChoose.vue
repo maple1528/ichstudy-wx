@@ -1,16 +1,18 @@
+<!-- 研学 - 研学详情页 - 立即报名选择 -->
 <template>
 	<view class="choose">
-		
+		<!-- 活动标题 -->
 		<view class="choose-top">
 			<image class="choose-top-close" src="/static/images/iCons/cha.png" @click="closeChoose()"></image>
 			<view class="choose-top-title">{{language ? entopHead : cntopHead}}</view>
 		</view>
-		
+		<!-- 参观日期 -->
 		<view class="choose-date">
 			<view class="choose-heading">{{heading[0]}}</view>
 			<view class="choose-date-list">
 				
 				<!-- 前三个选择框 -->
+				<!-- 默认显示日期中的前三天，若选择了之后的，第三场会被替代，且是选中态 -->
 				<view v-for="(item, index) in showDate" :key="index" @click="change(index, item)">
 					<!-- <touristChooseDate :info="item" :index="index"></touristChooseDate> -->
 					<view class="choose-date-box" :style="{'border': item.isShow, 'background-color': item.surplus ? '#F7F3E8': '#F7F7F7'}">
@@ -36,7 +38,7 @@
 				
 			</view>
 		</view>
-		
+		<!-- 参观时间 -->
 		<view class="choose-time">
 			<view class="choose-heading">{{heading[1]}}</view>
 			<view class="choose-time-list">
@@ -229,6 +231,7 @@
 						}
 					});
 				} else {
+					// 推荐改成模版字符串
 					uni.navigateTo({
 						url: '/subPackages/pages/tourist/confirmOrder?chooseDate=' + this.chooseDate + '&chooseTime=' + this.chooseTime
 						+ '&tindex=' + this.tindex + '&tsindex=' + this.tsindex

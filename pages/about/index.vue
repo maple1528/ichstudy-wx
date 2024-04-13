@@ -1,3 +1,4 @@
+<!-- 关于 -->
 <template>
 		<view class="content">
 			

@@ -3,16 +3,19 @@
 		<view class="back" @click="goOff()" :style="{top: scrollTop + 'rpx'}">
 			<image class="arrow-left" src="../../static/images/iCons/arrowLeftBrown.png"></image>
 		</view>
+		<!-- 输入账号 -->
 		<view class="input-box">
 			<input type="text" :placeholder="getUsername()" v-model="username" 
 				placeholder-class="phcolor" @blur="checkName()">
 		</view>
 		<view class="tips">{{tipName}}</view>
+		<!-- 输入密码 -->
 		<view class="input-box">
 			<input type="password" :placeholder="getPassword()" v-model="password" 
 				placeholder-class="phcolor" @blur="checkPwd()">
 		</view>
 		<view class="tips">{{tipCheck}}</view>
+		<!-- 再次输入密码 -->
 		<view class="input-box">
 			<input type="password" :placeholder="checkPassword()" v-model="checkword" 
 				placeholder-class="phcolor" @blur="checkdPwd()">
@@ -84,7 +87,8 @@
 			      },
 			    });
 			},
-			checkName(){
+			checkName() {
+				// 正则判断用户名是否为字母和数字组成
 				const reg = /^[0-9a-zA-Z]*$/
 				const username = this.username
 				if (!username) {
@@ -128,7 +132,8 @@
 							})
 							if(data.su === 0) {
 								return
-							} else{
+							} else {
+								// 这时候已经创建了一个没有绑定邮箱或手机号的用户了，只有账号和密码
 								uni.navigateTo({
 									url: './next?name=' + this.username
 								})

@@ -1,16 +1,23 @@
+<!-- 用户登录页面 -->
 <template>
 	<view class="content">
+		<!-- 回退 -->
 		<view class="back" @click="goOff()" :style="{top: scrollTop + 'rpx'}">
 			<image class="arrow-left" src="../../static/images/iCons/arrowLeftBrown.png"></image>
 		</view>
+		<!-- 输入用户名 -->
 		<view class="input-box">
 			<input type="text" :placeholder="getUsername()" v-model="userInfo.username" placeholder-class="phcolor">
 		</view>
+		<!-- 输入密码 -->
 		<view class="input-box">
 			<input type="password" :placeholder="getPassword()" v-model="userInfo.password" placeholder-class="phcolor">
 		</view>
+		<!-- 忘记密码 -->
 		<view class="forgot-btn" @click="forgotPsd()">{{isLanguage ? 'Forgot Password' : '忘记密码'}}</view>
+		<!-- 登录按钮 -->
 		<view class="index-btn" @click="login()">{{isLanguage ? 'Sign In' : '登录'}}</view>
+		<!-- 背景图 -->
 		<image class="bg" src="../../static/images/indexBG.png"></image>
 	</view>
 </template>
@@ -81,7 +88,9 @@
 				})
 				.catch(err => console.log(err))
 			},
+			// 登录
 			login() {
+				// 校验账号和密码是否填写完整，否则显示toast提示
 				if (!this.userInfo.username) {
 					uni.showToast({
 						title: '请填写账号',
@@ -96,10 +105,12 @@
 					})
 					return
 				}
+				// 基础校验成功后，调用login接口，传入数据
 				login(this.userInfo.username, this.userInfo.password)
 					.then(res => {
 						const that = this
 						const data = JSON.parse(res.data).endata
+						// 拿到后端返回的数据，并用toast显示
 						uni.showToast({
 							title: data.msg,
 							icon: 'none'
@@ -107,6 +118,7 @@
 						if(data.su === 0) {
 							return
 						} else {
+							// 登录成功，调用getUserInfo()函数拿到用户具体信息，并存储到微信缓存中，再跳转至首页
 							uni.setStorage({
 								key: 'token',
 								data: data.token,

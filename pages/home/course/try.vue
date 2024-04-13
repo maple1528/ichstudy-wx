@@ -1,3 +1,4 @@
+<!-- 调试页面，可删 -->
 <template>
 	<view class="vedio_player">
 		<txv-video vid="e0354z3cqjp" playerid="txv1" class="video"></txv-video>

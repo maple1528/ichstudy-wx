@@ -1,26 +1,35 @@
+<!-- 我的 -->
 <template>
 	<view class="container">
+		<!-- 用户信息 -->
 		<view class="user" @click="set()">
+			<!-- 头像 -->
 			<image class="user_avatar" :src="userInfo.avatarUrl" mode="aspectFill"></image>
+			<!-- 用户名 -->
 			<text class="user_name">{{ userInfo.nickName ? userInfo.nickName : userInfo.username }}</text>
+			<!-- 具体信息 -->
 			<image :src="arrow" mode="aspectFill" class="user_arrow"></image>
 		</view>
 		
 		<view class="content">
+			<!-- 积分 -->
 			<view class="point">
 				<view class="point_score">{{point}}</view>
 				<text class="point_text">{{title[0]}}</text>
 			</view>
+			<!-- 学习总时长 -->
 			<view class="duration">
 				<view class="duration_score">{{time_text}}</view>
 				<text class="point_text">{{title[1]}}</text>
 			</view>
+			<!-- 观看视频总次数 -->
 			<view class="times">
 				<view class="times_content">
 					<text class="times_text">{{title[2]}}</text>
 					<view class="times_time">{{total_num}}</view>
 				</view>
 			</view>
+			<!-- 观看最多的视频 -->
 			<view class="max">
 				<text class="max_text">{{title[3]}}</text>
 				<view class="max_content">
@@ -28,21 +37,21 @@
 					<view class="max_time">{{v_num}}</view>
 				</view>
 			</view>
-			
+			<!-- 历史记录&关于 -->
 			<view class="setting">
 				<view :class="index === settingItems.length - 1? 'none':'setting_item'" v-for="(item, index) in settingItems" :key="index" @click="go(item.url)">
 					<view class="text">{{isLanguage? item.enname : item.cnname}}</view>
 					<image :src="arrow" mode="aspectFill" class="setting_arrow"></image>
 				</view>
 			</view>
-			
+			<!-- 我的订单 -->
 			<view class="order">
 				<view class="none" v-for="(item, index) in touristItems" :key="index" @click="go(item.url)">
 					<view class="text">{{isLanguage? item.enname : item.cnname}}</view>
 					<image :src="arrow" mode="aspectFill" class="setting_arrow"></image>
 				</view>
 			</view>
-			
+			<!-- 退出登录 -->
 			<button type="default" class="btn" @click="logout()">{{title[4]}}</button>
 		</view>
 		<tabbar :state="4"></tabbar>
@@ -96,10 +105,12 @@
 				isLanguage: false
 			}
 		},
-		computed:{
+		computed: {
+			// 积分计算方法
 			point () {
 			  return Math.floor(this.total_time / 10)
 			},
+			// 学习总时长
 			time_text () {
 			  const hour = Math.floor(this.total_time / 60)
 			  const min = Math.floor(this.total_time - hour * 60)
@@ -138,6 +149,7 @@
 					url
 				})
 			},
+			// 退出登录时，需要移除在微信缓存中的用户信息
 			logout() {
 				wx.removeStorageSync('openid')
 				wx.removeStorageSync('token')

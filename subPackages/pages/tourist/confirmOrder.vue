@@ -1,13 +1,16 @@
+<!-- 研学 - 研学详情页 - 确认订单 -->
 <template>
 	<view class="container">
+		<!-- 参观时间 -->
 		<view class="time">
 			<view class="head">{{language ? 'Visit time' :'参观时间'}}</view>
 			<view>{{chooseDate + ' ' + chooseTime}}</view>
 		</view>
-
+		<!-- 添加观众 -->
 		<view class="audience">
 			<view class="audience-head">
 				<view class="head">{{language ? 'Add audience' :'添加观众'}}</view>
+				<!-- 人数增加按钮 -->
 				<view class="audience-operation">
 					<image src="../../../static/images/iCons/sub.png" mode="aspectFill" class="audience-icon"
 						@click="audienceReduce()"></image>
@@ -16,6 +19,7 @@
 						@click="audienceAdd()"></image>
 				</view>
 			</view>
+			<!-- 已添加的观众 -->
 			<view class="audience-operate" v-for="(item, index) in audience" :key="index">
 				<image src="/static/images/iCons/subbrown.png" mode="aspectFill" class="audience-icon"
 					@click="deleteCur(index)"></image>
@@ -24,6 +28,7 @@
 					<view>{{item.userID}}</view>
 				</view>
 			</view>
+			<!-- 新增观众 -->
 			<view class="audience-add" v-show="isAdd">
 				<view class="audience-add-input">
 					<input type="text" v-model="newAudience.username" class="add" :placeholder='tip[0]'
@@ -32,14 +37,16 @@
 						:placeholder='tip[1]' placeholder-class="phcolor">
 				</view>
 				<view class="audience-add-icon">
+					<!-- 取消 -->
 					<image src="/static/images/iCons/chabrown.png" mode="aspectFill" class="add-icon-cha"
 						@click="confirmCancel()"></image>
+					<!-- 确认 -->
 					<image src="/static/images/iCons/checkbrown.png" mode="aspectFill" class="add-icon-check"
 						@click="confirmAdd()"></image>
 				</view>
 			</view>
 		</view>
-
+		<!-- 订单信息 -->
 		<view class="info">
 			<view class="head">{{language ? 'Order information' :'订单信息'}}</view>
 			<view class="info-audience" v-for="(item, index) in audience" :key="index">
@@ -56,18 +63,18 @@
 				<view class="cost">{{'￥ ' + audience.length * cost}}</view>
 			</view>
 		</view>
-
+		<!-- 手机号码 -->
 		<view class="phone">
 			<view class="head">{{language ? 'Phone number' :'手机号码'}}</view>
 			<input type="number" :placeholder='tip[2]' v-model="phone" placeholder-class="phcolor" @blur="checkPhone()">
 		</view>
-
+		<!-- 备注 -->
 		<view class="remark">
 			<view class="head">{{language ? 'Remarks' :'备注'}}</view>
 			<textarea type="text" auto-height="true" :placeholder='tip[3]' v-model="remark" placeholder-class="phcolor"
 				class="remark-content" />
 		</view>
-
+		<!-- 总价&付款按钮 -->
 		<view class="tabbar">
 			<view class="tabbar-left">
 				<view>{{language ? 'Total price' :'总价'}}</view>
@@ -220,6 +227,7 @@
 				}
 				return str;
 			},
+			// 新增研学订单
 			addRegistrationList() {
 				addRegistrationList(this.user.username, this.tsindex, this.tindex, JSON.parse(this.arrayToString(this.audience)), this.phone, this.remark)
 					.then(res => {
@@ -227,6 +235,7 @@
 					})
 					.catch(err => console.log(err))
 			},
+			// 粗看了一下这个函数放在这里是没用的，调用的是拿订单信息的接口，需仔细看一下是否可删
 			getRegistrationList() {
 				getRegistrationList()
 					.then(res => {
@@ -234,6 +243,7 @@
 					})
 					.catch(err => console.log(err))
 			},
+			// 获取研学信息
 			getTouristList(){
 				getTouristList()
 				.then(res => {

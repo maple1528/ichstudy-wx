@@ -3,11 +3,13 @@
 		<view class="back" @click="goOff()" :style="{top: scrollTop + 'rpx'}">
 			<image class="arrow-left" src="../../static/images/iCons/arrowLeftBrown.png"></image>
 		</view>
+		<!-- 输入新密码 -->
 		<view class="input-box">
 			<input type="password" :placeholder="getPassword()" v-model="password" 
 				placeholder-class="phcolor" @blur="checkPwd()">
 		</view>
 		<view class="tips">{{tipCheck}}</view>
+		<!-- 再次输入新密码 -->
 		<view class="input-box">
 			<input type="password" :placeholder="checkPassword()" v-model="checkword" 
 				placeholder-class="phcolor" @blur="checkdPwd()">
@@ -91,7 +93,8 @@
 					return true 
 				}
 			},
-			check(){
+			check() {
+				// 前端判断两次输入的密码是否一致
 				if (this.checkPwd() && this.checkdPwd()){
 					passwordmailresetdone(this.username, this.password, this.checkword)
 						.then(res => {
@@ -102,7 +105,8 @@
 							})
 							if(data.su === 0) {
 								return
-							}else{
+							} else {
+								// 修改密码成功后跳转至起始页
 								uni.navigateTo({
 									url: './index'
 								})

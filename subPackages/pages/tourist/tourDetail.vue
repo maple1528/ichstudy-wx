@@ -1,20 +1,23 @@
+<!-- 研学 - 研学详情页 -->
 <template>
+		<!-- 当显示选择框时，添加一层灰色遮罩 -->
 		<view :class="showChoose? 'darkcontent': 'content'">
-			
+			// 背景图
 			<view class="bg">
 				<image class="picbg" :src="tourinfo[0].img" mode="aspectFill"></image>
 			</view>
-			
+			<!-- 回退 -->
 			<view class="back" @click="goOff()" :style="{top: scrollTop + 'rpx'}">
 				<image class="arrow-left" src="../../../static/images/iCons/arrowLeftBrown.png"></image>
 			</view>
 			
 			<view class="container">
+				<!-- 活动标题 -->
 				<view class="intro">
 					<view class="title">{{language ? tourinfo[0].entitle : tourinfo[0].cntitle}}</view>
 					<view :class="!showing?'introduction-ellipsis':'introduction-complete'">{{language ?tourinfo[0].entext : tourinfo[0].cntext}}</view>
 				</view>
-				
+				<!-- 活动介绍 -->
 				<view class="zhankai" @click="showing = !showing">
 					<view class="fold">
 						{{(showing) ? (language ?'See More' : '展开更多') : (language ? 'See Less' : '收起更多')}}
@@ -23,7 +26,7 @@
 						<image class="arrowDown" :src="folded()"></image>
 					</view>
 				</view>
-				
+				<!-- 活动具体信息 -->
 				<view class="tour-details">
 					<view class="tour-detail">{{language ? '【Activity theme】' + tourinfo[0].enconcept : '【活动主题】' + tourinfo[0].cnconcept}}</view>
 					<view class="tour-detail">{{language ? '【Activity time】' + tourinfo[0].time : '【活动时间】' + tourinfo[0].time}}</view>
@@ -43,6 +46,7 @@
 			
 			<view class="safe-area"></view>
 			
+			<!-- 最下方的固定部分 -->
 			<view class="tabbar">
 				<view class="tableft">
 					<view class="peoplenum">{{language ? 'Registered ' + regNum + ' | ' +'Limited ' + tourinfo[0].limitnumber*price.length 
@@ -51,7 +55,7 @@
 				</view>
 				<button class="tour-btn" @click="Choose()">{{language ? 'Register' :'立即报名'}}</button>
 			</view>
-			
+			<!-- 活动报名选择框 -->
 			<view :class="showChoose ? 'darkback' : ''"></view>
 			<choose :class="showChoose ? 'showChoose' : 'noneChoose'" @itemclick="closeChooseBox()" v-if="isTrans"
 			:priceDate="price" :visitTime="visitTime" :cntopHead="tourinfo[0].cntitle" :entopHead="tourinfo[0].entitle"
@@ -142,7 +146,7 @@
 									id: item.tindex,
 									cntitle: item.cnname,
 									entitle: item.enname,
-									entext: '\xa0\xa0\xa0\xa0\xa0\xa0' + item.trip_eninfo,
+									entext: '\xa0\xa0\xa0\xa0\xa0\xa0' + item.trip_eninfo, // xa0是为了缩进效果
 									cntext: '\xa0\xa0\xa0\xa0\xa0\xa0' + item.trip_cninfo,
 									enconcept: item.entheme,
 									cnconcept: item.cntheme,
